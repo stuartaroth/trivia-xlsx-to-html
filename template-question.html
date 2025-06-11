@@ -1,0 +1,67 @@
+{{ define "question" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trivia Slide</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff;
+            padding: 2rem;
+        }
+
+        .slide {
+            max-width: 900px;
+            width: 100%;
+            padding: 3rem;
+            background-color: #f9f9f9;
+            border-radius: 2rem;
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .answer {
+            color: red;
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+<main class="slide">
+    <h3>{{ .QuestionHeader }}</h3>
+    <h1>{{ .QuestionText }}</h1>
+    <br>
+    {{ range .Answers }}
+    <h1 class="answer">{{ . }} </h1>
+    {{ end }}
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="footer">
+        <a href="{{ .BackLink }}">Back</a>
+        <a href="{{ .NextLink }}">Next</a>
+    </div>
+</main>
+</body>
+</html>
+{{ end }}

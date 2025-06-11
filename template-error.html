@@ -1,0 +1,54 @@
+{{ define "error" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trivia Slide</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff;
+            padding: 2rem;
+        }
+
+        .slide {
+            max-width: 900px;
+            width: 100%;
+            padding: 3rem;
+            background-color: #f9f9f9;
+            border-radius: 2rem;
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .choices label {
+            display: block;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        button {
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+<main class="slide">
+    <h3>you done messed up</h3>
+    <div>{{ .Error }}</div>
+</main>
+</body>
+</html>
+{{ end }}
