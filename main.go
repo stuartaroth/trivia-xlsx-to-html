@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	letters = []string{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}
+	letters = []string{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"}
 )
 
 type TriviaSheet struct {
@@ -70,7 +70,7 @@ func GetIndexedQuestionData(triviaSheets []TriviaSheet) map[string][]QuestionDat
 		}
 
 		for questionIndex, question := range triviaSheet.Questions {
-			questionHeader := fmt.Sprintf("Question %v", questionIndex+1)
+			questionHeader := fmt.Sprintf("Question %v Answer", questionIndex+1)
 
 			allQuestionData = append(allQuestionData, QuestionData{
 				QuestionHeader: questionHeader,
@@ -111,6 +111,7 @@ func main() {
 	f, err := excelize.OpenFile(xlsxFilename)
 	if err != nil {
 		fmt.Println("error reading ", xlsxFilename, ", error was ", err)
+		return
 	}
 
 	sheetNames := f.GetSheetList()
@@ -149,11 +150,6 @@ func main() {
 			Name:      sheetName,
 			Questions: questionAnswers,
 		})
-	}
-
-	mappy := make(map[string]TriviaSheet)
-	for _, triviaSheet := range triviaSheets {
-		mappy[triviaSheet.Name] = triviaSheet
 	}
 
 	indexedQuestionData := GetIndexedQuestionData(triviaSheets)
